@@ -1,0 +1,45 @@
+mysql> create database Shavana;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> use Shavana;
+Database changed
+mysql> create table School;
+ERROR 1113 (42000): A table must have at least 1 column
+mysql> create table school(stud_name varchar(20),stud_age int(6));
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> desc student;
+ERROR 1146 (42S02): Table 'shavana.student' doesn't exist
+mysql> decs School;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'decs School' at line 1
+mysql> desc School;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| stud_name | varchar(20) | YES  |     | NULL    |       |
+| stud_age  | int(6)      | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> alter table School add stud_id int(20),stud_marks int(20);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'stud_marks int(20)' at line 1
+mysql> alter table School add(stud_marks int(20));
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc School;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| stud_name  | varchar(20) | YES  |     | NULL    |       |
+| stud_age   | int(6)      | YES  |     | NULL    |       |
+| stud_marks | int(20)     | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+3 rows in set (0.02 sec)
+
+mysql> drop table School;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> desc School;
+ERROR 1146 (42S02): Table 'shavana.school' doesn't exist
+mysql>
