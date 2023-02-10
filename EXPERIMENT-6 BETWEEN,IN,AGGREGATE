@@ -1,0 +1,99 @@
+mysql> use shavana;
+Database changed
+mysql> create bia(stuid int(5),studname varchar(5),studmarks int(3));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'bia(stuid int(5),studname varchar(5),studmarks int(3))' at line 1
+mysql> create table bia(id int(5),name varchar(5),marks int(100));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> desc bia;
++-------+------------+------+-----+---------+-------+
+| Field | Type       | Null | Key | Default | Extra |
++-------+------------+------+-----+---------+-------+
+| id    | int(5)     | YES  |     | NULL    |       |
+| name  | varchar(5) | YES  |     | NULL    |       |
+| marks | int(100)   | YES  |     | NULL    |       |
++-------+------------+------+-----+---------+-------+
+3 rows in set (0.02 sec)
+
+mysql> insert into bia value(234,'ram',24);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into bia value(345,'ravi',54);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into bia value(876,'rose',78);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into bia value(743,'charan',97);
+ERROR 1406 (22001): Data too long for column 'name' at row 1
+mysql> insert into bia value(875,'hari',76);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select *from bia where marks between 60 and 90;
++------+------+-------+
+| id   | name | marks |
++------+------+-------+
+|  876 | rose |    78 |
+|  875 | hari |    76 |
++------+------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select *from bia where marks in(54,76);
++------+------+-------+
+| id   | name | marks |
++------+------+-------+
+|  345 | ravi |    54 |
+|  875 | hari |    76 |
++------+------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select (max marks) from bia;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'marks) from bia' at line 1
+mysql> select(max marks) from bia;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'marks) from bia' at line 1
+mysql> select(max,marks)from bia;
+ERROR 1054 (42S22): Unknown column 'max' in 'field list'
+mysql> select (max marks)from bia;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'marks)from bia' at line 1
+mysql> select (maxmarks) from bia;
+ERROR 1054 (42S22): Unknown column 'maxmarks' in 'field list'
+mysql> select (max marks) from bia;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'marks) from bia' at line 1
+mysql> select(max marks)from bia;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'marks)from bia' at line 1
+mysql> select (max marks) from bia;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'marks) from bia' at line 1
+mysql> select max(marks) from bia;
++------------+
+| max(marks) |
++------------+
+|         78 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select min(marks) from bia;
++------------+
+| min(marks) |
++------------+
+|         24 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select count(marks) from bia;
++--------------+
+| count(marks) |
++--------------+
+|            4 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select avg(marks) from bia;
++------------+
+| avg(marks) |
++------------+
+|    58.0000 |
++------------+
+1 row in set (0.00 sec)
+
+mysql>
+
